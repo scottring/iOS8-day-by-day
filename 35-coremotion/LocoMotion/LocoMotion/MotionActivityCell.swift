@@ -64,7 +64,7 @@ class MotionActivityCell: UITableViewCell {
     pedometer?.queryPedometerDataFromDate(activity?.startDate, toDate: activity?.endDate) {
       (data, error) -> Void in
       if error != nil {
-        println("There was an error requesting data from the pedometer: \(error)")
+        print("There was an error requesting data from the pedometer: \(error)")
       } else {
         dispatch_async(dispatch_get_main_queue()) {
           self.pedometerLabel.text = self.constructPedometerString(data)

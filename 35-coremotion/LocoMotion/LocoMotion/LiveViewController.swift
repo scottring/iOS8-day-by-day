@@ -46,10 +46,10 @@ class LiveViewController: UIViewController {
     altimeter.startRelativeAltitudeUpdatesToQueue(dataProcessingQueue) {
       (data, error) in
       if error != nil {
-        println("There was an error obtaining altimeter data: \(error)")
+        print("There was an error obtaining altimeter data: \(error)")
       } else {
         dispatch_async(dispatch_get_main_queue()) {
-          self.altChange += data.relativeAltitude as! Double
+          self.altChange += data!.relativeAltitude as! Double
           self.altitudeLabel.text = "\(self.lengthFormatter.stringFromMeters(self.altChange))"
         }
       }
@@ -59,12 +59,12 @@ class LiveViewController: UIViewController {
     pedometer.startPedometerUpdatesFromDate(NSDate()) {
       (data, error) in
       if error != nil {
-        println("There was an error obtaining pedometer data: \(error)")
+        print("There was an error obtaining pedometer data: \(error)")
       } else {
         dispatch_async(dispatch_get_main_queue()) {
-          self.floorsLabel.text = "\(data.floorsAscended)"
-          self.stepsLabel.text = "\(data.numberOfSteps)"
-          self.distanceLabel.text = "\(self.lengthFormatter.stringFromMeters(data.distance as! Double))"
+          self.floorsLabel.text = "\(data!.floorsAscended)"
+          self.stepsLabel.text = "\(data!.numberOfSteps)"
+          self.distanceLabel.text = "\(self.lengthFormatter.stringFromMeters(dat!a.distance as! Double))"
         }
       }
     }
